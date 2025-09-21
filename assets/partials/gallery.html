@@ -1,0 +1,131 @@
+<!-- Gallery Section (partial) -->
+<section id="gallery" class="gallery-section">
+    <div class="container">
+        <div class="section-header">
+            <h2 class="section-title">Featured Gallery</h2>
+            <p class="section-subtitle">Browse through our curated collection of creative works</p>
+        </div>
+
+        <!-- Gallery Filters -->
+        <div class="gallery-filters">
+            <div class="filter-controls">
+                <button class="filter-btn active" data-filter="all">All</button>
+                <button class="filter-btn" data-filter="photography">Photography</button>
+                <button class="filter-btn" data-filter="video">Videos</button>
+                <button class="filter-btn" data-filter="digital-art">Digital Art</button>
+                <button class="filter-btn" data-filter="nature">Nature</button>
+                <button class="filter-btn" data-filter="portrait">Portraits</button>
+            </div>
+            
+            <div class="search-box">
+                <input type="text" id="gallery-search" placeholder="Search gallery...">
+                <i class="fas fa-search"></i>
+            </div>
+        </div>
+
+        <!-- Gallery Grid -->
+        <div class="gallery-grid" id="gallery-grid">
+            <!-- Sample Gallery Items -->
+            <div class="gallery-item" data-category="photography nature">
+                <div class="gallery-card">
+                    <img src="https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=400&h=300&fit=crop" alt="Mountain Landscape" loading="lazy">
+                    <div class="gallery-overlay">
+                        <div class="gallery-info">
+                            <h3>Mountain Landscape</h3>
+                            <p>Breathtaking mountain vista</p>
+                            <span class="gallery-category">Nature</span>
+                        </div>
+                        <button class="gallery-btn" onclick="openModal(this)" data-title="Mountain Landscape" data-description="A stunning mountain landscape captured during golden hour" data-src="https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=800&h=600&fit=crop">
+                            <i class="fas fa-expand"></i>
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="gallery-item" data-category="video">
+                <div class="gallery-card video-card">
+                    <div class="video-thumbnail">
+                        <img src="https://images.unsplash.com/photo-1492691527719-9d1e07e534b4?w=400&h=300&fit=crop" alt="Ocean Waves Video" loading="lazy">
+                        <div class="play-button">
+                            <i class="fas fa-play"></i>
+                        </div>
+                    </div>
+                    <div class="gallery-overlay">
+                        <div class="gallery-info">
+                            <h3>Ocean Waves</h3>
+                            <p>Relaxing ocean soundscape</p>
+                            <span class="gallery-category">Video</span>
+                        </div>
+                        <button class="gallery-btn" onclick="openVideoModal(this)" data-title="Ocean Waves" data-description="Calming ocean waves with natural sound">
+                            <i class="fas fa-play"></i>
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="gallery-item" data-category="portrait photography">
+                <div class="gallery-card">
+                    <img src="https://images.unsplash.com/photo-1494790108755-2616b612b786?w=400&h=300&fit=crop" alt="Portrait Photography" loading="lazy">
+                    <div class="gallery-overlay">
+                        <div class="gallery-info">
+                            <h3>Portrait Study</h3>
+                            <p>Professional portrait photography</p>
+                            <span class="gallery-category">Portrait</span>
+                        </div>
+                        <button class="gallery-btn" onclick="openModal(this)" data-title="Portrait Study" data-description="A professional portrait showcasing natural lighting techniques" data-src="https://images.unsplash.com/photo-1494790108755-2616b612b786?w=800&h=600&fit=crop">
+                            <i class="fas fa-expand"></i>
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="gallery-item" data-category="digital-art">
+                <div class="gallery-card">
+                    <img src="https://images.unsplash.com/photo-1541701494587-cb58502866ab?w=400&h=300&fit=crop" alt="Digital Art" loading="lazy">
+                    <div class="gallery-overlay">
+                        <div class="gallery-info">
+                            <h3>Abstract Digital</h3>
+                            <p>Modern digital artwork</p>
+                            <span class="gallery-category">Digital Art</span>
+                        </div>
+                        <button class="gallery-btn" onclick="openModal(this)" data-title="Abstract Digital" data-description="Contemporary digital art with vibrant colors and geometric patterns" data-src="https://images.unsplash.com/photo-1541701494587-cb58502866ab?w=800&h=600&fit=crop">
+                            <i class="fas fa-expand"></i>
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="gallery-item" data-category="nature photography">
+                <div class="gallery-card">
+                    <img src="https://images.unsplash.com/photo-1441974231531-c6227db76b6e?w=400&h=300&fit=crop" alt="Forest Path" loading="lazy">
+                    <div class="gallery-overlay">
+                        <div class="gallery-info">
+                            <h3>Forest Path</h3>
+                            <p>Mystical forest pathway</p>
+                            <span class="gallery-category">Nature</span>
+                        </div>
+                        <button class="gallery-btn" onclick="openModal(this)" data-title="Forest Path" data-description="A mysterious forest path leading into the unknown depths of nature" data-src="https://images.unsplash.com/photo-1441974231531-c6227db76b6e?w=800&h=600&fit=crop">
+                            <i class="fas fa-expand"></i>
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="gallery-item" data-category="photography">
+                <div class="gallery-card">
+                    <img src="https://images.unsplash.com/photo-1449824913935-59a10b8d2000?w=400&h=300&fit=crop" alt="Urban Architecture" loading="lazy">
+                    <div class="gallery-overlay">
+                        <div class="gallery-info">
+                            <h3>Urban Lines</h3>
+                            <p>Modern architecture study</p>
+                            <span class="gallery-category">Architecture</span>
+                        </div>
+                        <button class="gallery-btn" onclick="openModal(this)" data-title="Urban Lines" data-description="Contemporary architecture showcasing clean lines and modern design" data-src="https://images.unsplash.com/photo-1449824913935-59a10b8d2000?w=800&h=600&fit=crop">
+                            <i class="fas fa-expand"></i>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    
+*** End Patch

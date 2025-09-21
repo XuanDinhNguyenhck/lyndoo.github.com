@@ -1,0 +1,295 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LynDoo shop - Featured Gallery</title>
+    <meta name="description" content="A beautiful gallery showcasing creative works - photos, videos, and digital art">
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Delius+Swash+Caps&family=Source+Serif+4:wght@400;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+
+    <!-- CSS -->
+    <link rel="stylesheet" href="assets/css/style.css">
+    <link rel="stylesheet" href="assets/css/dock.css">
+
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <nav class="navbar">
+            <div class="nav-container nav-center">
+                <a href="index.html" class="nav-logo">
+                    <i class="fas fa-camera-retro"></i>
+                    LynDoo shop
+                </a>
+            </div>
+        </nav>
+    </header>
+
+    <!-- Gallery Section -->
+<section id="gallery" class="gallery-section">
+    <div class="container">
+        <div class="section-header">
+            <h2 class="section-title">Featured Gallery</h2>
+            <p class="section-subtitle">Browse through our curated collection of creative works</p>
+        </div>
+
+        <!-- Gallery Filters -->
+        <div class="gallery-filters">
+            <div class="filter-controls">
+                <button class="filter-btn active" data-filter="all">All</button>
+                <button class="filter-btn" data-filter="photography">Photography</button>
+                <button class="filter-btn" data-filter="video">Videos</button>
+                <button class="filter-btn" data-filter="digital-art">Digital Art</button>
+                <button class="filter-btn" data-filter="nature">Nature</button>
+                <button class="filter-btn" data-filter="portrait">Portraits</button>
+            </div>
+            
+            <div class="search-box">
+                <input type="text" id="gallery-search" placeholder="Search gallery...">
+                <i class="fas fa-search"></i>
+            </div>
+        </div>
+
+        <!-- Gallery Grid -->
+        <div class="gallery-grid" id="gallery-grid">
+            <!-- Sample Gallery Items -->
+            <div class="gallery-item" data-category="photography nature">
+                <div class="gallery-card">
+                    <img src="https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=400&h=300&fit=crop" alt="Mountain Landscape" loading="lazy">
+                    <div class="gallery-overlay">
+                        <div class="gallery-info">
+                            <h3>Mountain Landscape</h3>
+                            <p>Breathtaking mountain vista</p>
+                            <span class="gallery-category">Nature</span>
+                        </div>
+                        <button class="gallery-btn" onclick="openModal(this)" data-title="Mountain Landscape" data-description="A stunning mountain landscape captured during golden hour" data-src="https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=800&h=600&fit=crop">
+                            <i class="fas fa-expand"></i>
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="gallery-item" data-category="video">
+                <div class="gallery-card video-card">
+                    <div class="video-thumbnail">
+                        <img src="https://images.unsplash.com/photo-1492691527719-9d1e07e534b4?w=400&h=300&fit=crop" alt="Ocean Waves Video" loading="lazy">
+                        <div class="play-button">
+                            <i class="fas fa-play"></i>
+                        </div>
+                    </div>
+                    <div class="gallery-overlay">
+                        <div class="gallery-info">
+                            <h3>Ocean Waves</h3>
+                            <p>Relaxing ocean soundscape</p>
+                            <span class="gallery-category">Video</span>
+                        </div>
+                        <button class="gallery-btn" onclick="openVideoModal(this)" data-title="Ocean Waves" data-description="Calming ocean waves with natural sound">
+                            <i class="fas fa-play"></i>
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="gallery-item" data-category="portrait photography">
+                <div class="gallery-card">
+                    <img src="https://images.unsplash.com/photo-1494790108755-2616b612b786?w=400&h=300&fit=crop" alt="Portrait Photography" loading="lazy">
+                    <div class="gallery-overlay">
+                        <div class="gallery-info">
+                            <h3>Portrait Study</h3>
+                            <p>Professional portrait photography</p>
+                            <span class="gallery-category">Portrait</span>
+                        </div>
+                        <button class="gallery-btn" onclick="openModal(this)" data-title="Portrait Study" data-description="A professional portrait showcasing natural lighting techniques" data-src="https://images.unsplash.com/photo-1494790108755-2616b612b786?w=800&h=600&fit=crop">
+                            <i class="fas fa-expand"></i>
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="gallery-item" data-category="digital-art">
+                <div class="gallery-card">
+                    <img src="https://images.unsplash.com/photo-1541701494587-cb58502866ab?w=400&h=300&fit=crop" alt="Digital Art" loading="lazy">
+                    <div class="gallery-overlay">
+                        <div class="gallery-info">
+                            <h3>Abstract Digital</h3>
+                            <p>Modern digital artwork</p>
+                            <span class="gallery-category">Digital Art</span>
+                        </div>
+                        <button class="gallery-btn" onclick="openModal(this)" data-title="Abstract Digital" data-description="Contemporary digital art with vibrant colors and geometric patterns" data-src="https://images.unsplash.com/photo-1541701494587-cb58502866ab?w=800&h=600&fit=crop">
+                            <i class="fas fa-expand"></i>
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="gallery-item" data-category="nature photography">
+                <div class="gallery-card">
+                    <img src="https://images.unsplash.com/photo-1441974231531-c6227db76b6e?w=400&h=300&fit=crop" alt="Forest Path" loading="lazy">
+                    <div class="gallery-overlay">
+                        <div class="gallery-info">
+                            <h3>Forest Path</h3>
+                            <p>Mystical forest pathway</p>
+                            <span class="gallery-category">Nature</span>
+                        </div>
+                        <button class="gallery-btn" onclick="openModal(this)" data-title="Forest Path" data-description="A mysterious forest path leading into the unknown depths of nature" data-src="https://images.unsplash.com/photo-1441974231531-c6227db76b6e?w=800&h=600&fit=crop">
+                            <i class="fas fa-expand"></i>
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="gallery-item" data-category="photography">
+                <div class="gallery-card">
+                    <img src="https://images.unsplash.com/photo-1449824913935-59a10b8d2000?w=400&h=300&fit=crop" alt="Urban Architecture" loading="lazy">
+                    <div class="gallery-overlay">
+                        <div class="gallery-info">
+                            <h3>Urban Lines</h3>
+                            <p>Modern architecture study</p>
+                            <span class="gallery-category">Architecture</span>
+                        </div>
+                        <button class="gallery-btn" onclick="openModal(this)" data-title="Urban Lines" data-description="Contemporary architecture showcasing clean lines and modern design" data-src="https://images.unsplash.com/photo-1449824913935-59a10b8d2000?w=800&h=600&fit=crop">
+                            <i class="fas fa-expand"></i>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    
+        <!-- Load More Button -->
+        <div class="gallery-actions">
+            <button class="btn btn-secondary" id="load-more">
+                Load More
+                <i class="fas fa-chevron-down"></i>
+            </button>
+        </div>
+    </div>
+</section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>LynDoo shop</h3>
+                    <p>Showcasing creativity through visual storytelling</p>
+                    <div class="social-links">
+                        <a href="#" aria-label="Facebook"><i class="fab fa-facebook"></i></a>
+                        <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+                        <a href="#" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+                        <a href="#" aria-label="YouTube"><i class="fab fa-youtube"></i></a>
+                    </div>
+                </div>
+                <div class="footer-section">
+                    <h4>Quick Links</h4>
+                    <ul>
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="gallery.html">Gallery</a></li>
+                        <li><a href="about.html">About</a></li>
+                        <li><a href="contact.html">Contact</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>Categories</h4>
+                    <ul>
+                        <li><a href="#">Photography</a></li>
+                        <li><a href="#">Videos</a></li>
+                        <li><a href="#">Digital Art</a></li>
+                        <li><a href="#">Nature</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>Support</h4>
+                    <ul>
+                        <li><a href="#">Help Center</a></li>
+                        <li><a href="#">Privacy Policy</a></li>
+                        <li><a href="#">Terms of Service</a></li>
+                        <li><a href="#">FAQ</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2024 LynDoo shop. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Modal -->
+    <div id="modal" class="modal">
+        <div class="modal-content">
+            <span class="modal-close">&times;</span>
+            <div class="modal-body">
+                <img id="modal-image" src="" alt="">
+                <div id="modal-video" class="modal-video-container"></div>
+                <div class="modal-info">
+                    <h3 id="modal-title"></h3>
+                    <p id="modal-description"></p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+ <!-- App Dock -->
+    <div class="dock-outer" id="app-dock">
+    <div class="dock-panel" id="dock-panel" role="toolbar" aria-label="Application dock" style="height:50px">
+            <div class="dock-item" data-label="Home" data-action="home">
+                <div class="dock-icon"><i class="fas fa-home"></i></div>
+                <div class="dock-label">Home</div>
+            </div>
+            <div class="dock-item" data-label="Gallery" data-action="gallery">
+                <div class="dock-icon"><i class="fas fa-archive"></i></div>
+                <div class="dock-label">Gallery</div>
+            </div>
+            <div class="dock-item" data-label="About" data-action="about">
+                <div class="dock-icon"><i class="fas fa-user"></i></div>
+                <div class="dock-label">About</div>
+            </div>
+            <div class="dock-item" data-label="Contact" data-action="contact">
+                <div class="dock-icon"><i class="fas fa-envelope"></i></div>
+                <div class="dock-label">Contact</div>
+            </div>
+            <div class="dock-item" data-label="Settings" data-action="settings">
+                <div class="dock-icon"><i class="fas fa-cog"></i></div>
+                <div class="dock-label">Settings</div>
+            </div>
+            <div class="dock-item" data-label="Theme" data-action="toggle-theme" role="button" aria-pressed="false" tabindex="0">
+                <div class="dock-icon"><i id="dock-theme-icon" class="fas fa-moon" aria-hidden="true"></i></div>
+                <div class="dock-label">Theme</div>
+            </div>
+        </div>
+    </div>
+    <script src="assets/js/partials-injector.js"></script>
+    <script src="assets/js/script.js"></script>
+    <script src="assets/js/dock.js"></script>
+    <script>
+        // Simple dock navigation mapping for standalone pages
+        (function(){
+            const dock = document.getElementById('dock-panel');
+            if(!dock) return;
+            dock.addEventListener('click', (e) => {
+                const item = e.target.closest('.dock-item');
+                if(!item) return;
+                const action = item.getAttribute('data-action');
+                if(!action) return;
+                const map = {
+                    home: 'index.html',
+                    gallery: 'gallery.html',
+                    about: 'about.html',
+                    contact: 'contact.html'
+                };
+                if(map[action]) {
+                    window.location.href = map[action];
+                }
+                if(action === 'toggle-theme' && window.ThemeManager) {
+                    window.ThemeManager.toggleTheme && window.ThemeManager.toggleTheme();
+                }
+            });
+        })();
+    </script>
+</body>
+</html>
