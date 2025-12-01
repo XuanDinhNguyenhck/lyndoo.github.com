@@ -1,26 +1,30 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>LynDoo shop - Showcase Your Creativity</title>
     <meta name="description" content="A beautiful gallery showcasing creative works - photos, videos, and digital art">
-    
+
     <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Delius+Swash+Caps&family=Source+Serif+4:wght@400;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
-    
+    <link
+        href="https://fonts.googleapis.com/css2?family=Delius+Swash+Caps&family=Source+Serif+4:wght@400;600;700&family=JetBrains+Mono:wght@400;500&display=swap"
+        rel="stylesheet">
+
     <!-- CSS -->
     <link rel="stylesheet" href="assets/css/style.css">
     <link rel="stylesheet" href="assets/css/dock.css">
     <link rel="stylesheet" href="assets/css/gridMotion.css">
-    
+
     <!-- Font Awesome for icons -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 </head>
+
 <body>
-    
+
     <!-- Header -->
     <header class="header">
         <nav class="navbar">
@@ -42,31 +46,34 @@
             // Example: set custom items before GridMotion init
             // window.GRID_ITEMS = [ 'https://...jpg', 'Item 2', '<div>HTML</div>' ];
             // window.GRID_GRADIENT = 'rgba(0,0,0,0.6)';
-            (function(){
-                try{
+            (function () {
+                try {
                     const home = document.getElementById('home');
-                    if(home && window.GridMotion && !window.GridMotion._mounted){
-                        window.GridMotion.init({ container: home, items: window.GRID_ITEMS || [], gradientColor: window.GRID_GRADIENT || 'rgba(0,0,0,0.6)'});
+                    if (home && window.GridMotion && !window.GridMotion._mounted) {
+                        window.GridMotion.init({ container: home, items: window.GRID_ITEMS || [], gradientColor: window.GRID_GRADIENT || 'rgba(0,0,0,0.6)' });
                     }
-                }catch(e){
+                } catch (e) {
                     console.warn('GridMotion init failed', e);
                 }
             })();
         </script>
         <div class="hero-content">
-            <h1 class="hero-title">Creative Showcase</h1>
-            <!-- <p class="hero-subtitle">Discover stunning photography, captivating videos, and digital artworks</p> -->
-                <div class="hero-actions">
+            <h1 class="hero-title">
+                <span>Curated</span>
+                <span>Creativity</span>
+            </h1>
+            <p class="hero-subtitle">Discover exclusive photography, cinematic videos, and digital artworks for your
+                next project.</p>
+            <div class="hero-actions">
                 <a class="btn btn-primary" href="gallery.html">
-                    Explore Gallery
+                    <i class="fas fa-shopping-bag"></i> Shop Collection
                 </a>
                 <button class="btn btn-secondary">
-                    <i class="fas fa-play"></i>
-                    Watch Demo
+                    <i class="fas fa-play"></i> Watch Showreel
                 </button>
             </div>
         </div>
-        
+
         <!-- <div class="hero-visual">
             <div class="hero-grid">
                 <div class="hero-card" style="--delay: 0s">
@@ -92,14 +99,14 @@
 
     <!-- Gallery placeholder (injected from assets/partials/gallery.html) -->
     <div id="gallery-placeholder"></div>
-            <!-- Load More Button -->
-            <div class="gallery-actions">
-                <button class="btn btn-secondary" id="load-more">
-                    Load More
-                    <i class="fas fa-chevron-down"></i>
-                </button>
-            </div>
-        </div>
+    <!-- Load More Button -->
+    <div class="gallery-actions">
+        <button class="btn btn-secondary" id="load-more">
+            Load More
+            <i class="fas fa-chevron-down"></i>
+        </button>
+    </div>
+    </div>
     </section>
 
     <!-- About placeholder (injected from assets/partials/about.html) -->
@@ -174,7 +181,7 @@
     <!-- JavaScript -->
     <!-- App Dock -->
     <div class="dock-outer" id="app-dock">
-    <div class="dock-panel" id="dock-panel" role="toolbar" aria-label="Application dock" style="height:50px">
+        <div class="dock-panel" id="dock-panel" role="toolbar" aria-label="Application dock" style="height:50px">
             <div class="dock-item" data-label="Home" data-action="home">
                 <div class="dock-icon"><i class="fas fa-home"></i></div>
                 <div class="dock-label">Home</div>
@@ -195,7 +202,8 @@
                 <div class="dock-icon"><i class="fas fa-cog"></i></div>
                 <div class="dock-label">Settings</div>
             </div>
-            <div class="dock-item" data-label="Theme" data-action="toggle-theme" role="button" aria-pressed="false" tabindex="0">
+            <div class="dock-item" data-label="Theme" data-action="toggle-theme" role="button" aria-pressed="false"
+                tabindex="0">
                 <div class="dock-icon"><i id="dock-theme-icon" class="fas fa-moon" aria-hidden="true"></i></div>
                 <div class="dock-label">Theme</div>
             </div>
@@ -206,28 +214,29 @@
     <script src="assets/js/dock.js"></script>
     <script>
         // Simple dock navigation mapping for standalone pages
-        (function(){
+        (function () {
             const dock = document.getElementById('dock-panel');
-            if(!dock) return;
+            if (!dock) return;
             dock.addEventListener('click', (e) => {
                 const item = e.target.closest('.dock-item');
-                if(!item) return;
+                if (!item) return;
                 const action = item.getAttribute('data-action');
-                if(!action) return;
+                if (!action) return;
                 const map = {
                     home: 'index.html',
                     gallery: 'gallery.html',
                     about: 'about.html',
                     contact: 'contact.html'
                 };
-                if(map[action]) {
+                if (map[action]) {
                     window.location.href = map[action];
                 }
-                if(action === 'toggle-theme' && window.ThemeManager) {
+                if (action === 'toggle-theme' && window.ThemeManager) {
                     window.ThemeManager.toggleTheme && window.ThemeManager.toggleTheme();
                 }
             });
         })();
     </script>
 </body>
+
 </html>

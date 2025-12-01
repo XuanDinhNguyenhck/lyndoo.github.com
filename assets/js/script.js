@@ -24,7 +24,7 @@ class ThemeManager {
     init() {
         this.applyTheme();
         this.updateThemeIcon();
-        
+
         themeToggle.addEventListener('click', () => {
             this.toggleTheme();
         });
@@ -125,7 +125,7 @@ class GalleryManager {
 
     init() {
         this.galleryItems = Array.from(document.querySelectorAll('.gallery-item'));
-        
+
         // Filter buttons
         filterButtons.forEach(btn => {
             btn.addEventListener('click', (e) => {
@@ -164,12 +164,12 @@ class GalleryManager {
             const title = item.querySelector('h3').textContent.toLowerCase();
             const description = item.querySelector('p').textContent.toLowerCase();
 
-            const matchesFilter = this.currentFilter === 'all' || 
-                                categories.includes(this.currentFilter);
-            const matchesSearch = this.searchTerm === '' || 
-                                title.includes(this.searchTerm) || 
-                                description.includes(this.searchTerm) ||
-                                categories.includes(this.searchTerm);
+            const matchesFilter = this.currentFilter === 'all' ||
+                categories.includes(this.currentFilter);
+            const matchesSearch = this.searchTerm === '' ||
+                title.includes(this.searchTerm) ||
+                description.includes(this.searchTerm) ||
+                categories.includes(this.searchTerm);
 
             if (matchesFilter && matchesSearch) {
                 if (visibleCount < this.visibleItems) {
@@ -198,11 +198,11 @@ class GalleryManager {
     }
 
     updateLoadMoreButton() {
-        const hiddenItems = this.galleryItems.filter(item => 
-            item.style.display === 'none' && 
+        const hiddenItems = this.galleryItems.filter(item =>
+            item.style.display === 'none' &&
             !item.classList.contains('hidden')
         );
-        
+
         if (hiddenItems.length === 0) {
             loadMoreBtn.style.display = 'none';
         } else {
@@ -251,7 +251,7 @@ class ModalManager {
         modalDescription.textContent = description;
         modalImage.style.display = 'none';
         modalVideo.style.display = 'block';
-        
+
         // Create a placeholder video or embed
         modalVideo.innerHTML = `
             <div style="display: flex; align-items: center; justify-content: center; height: 100%; background: #000; color: white; font-size: 1.2rem;">
@@ -262,7 +262,7 @@ class ModalManager {
                 </div>
             </div>
         `;
-        
+
         modal.style.display = 'block';
         document.body.style.overflow = 'hidden';
     }
@@ -308,7 +308,7 @@ class AnimationManager {
         window.addEventListener('scroll', () => {
             const scrolled = window.pageYOffset;
             const parallaxElements = document.querySelectorAll('.hero-visual');
-            
+
             parallaxElements.forEach(element => {
                 const speed = 0.5;
                 element.style.transform = `translateY(${scrolled * speed}px)`;
@@ -344,7 +344,7 @@ class FormManager {
         try {
             // Simulate form submission
             await new Promise(resolve => setTimeout(resolve, 2000));
-            
+
             // Show success message
             this.showNotification('Message sent successfully!', 'success');
             form.reset();
@@ -391,6 +391,41 @@ class FormManager {
     }
 }
 
+// Cart Management
+class CartManager {
+    constructor() {
+        this.cart = JSON.parse(localStorage.getItem('cart')) || [];
+        this.init();
+    }
+
+    init() {
+        this.updateCartUI();
+    }
+
+    addItem(title, price) {
+        this.cart.push({ title, price, id: Date.now() });
+        this.saveCart();
+        this.updateCartUI();
+
+        // Show notification
+        if (window.formManager) {
+            window.formManager.showNotification(`Added "${title}" to cart ($${price})`, 'success');
+        } else {
+            alert(`Added "${title}" to cart!`);
+        }
+    }
+
+    saveCart() {
+        localStorage.setItem('cart', JSON.stringify(this.cart));
+    }
+
+    updateCartUI() {
+        // Update cart count if we had a cart icon
+        const cartCount = this.cart.length;
+        // console.log('Cart updated:', cartCount, 'items');
+    }
+}
+
 // Utility Functions
 function debounce(func, wait) {
     let timeout;
@@ -406,7 +441,7 @@ function debounce(func, wait) {
 
 function throttle(func, limit) {
     let inThrottle;
-    return function() {
+    return function () {
         const args = arguments;
         const context = this;
         if (!inThrottle) {
@@ -418,25 +453,33 @@ function throttle(func, limit) {
 }
 
 // Global Functions for HTML onclick handlers
-window.openModal = function(button) {
+window.openModal = function (button) {
     const title = button.dataset.title;
     const description = button.dataset.description;
     const src = button.dataset.src;
-    
+
     window.modalManager.openImageModal(title, description, src);
 };
 
-window.openVideoModal = function(button) {
+window.openVideoModal = function (button) {
     const title = button.dataset.title;
     const description = button.dataset.description;
-    
+
     window.modalManager.openVideoModal(title, description);
 };
+
+window.addToCart = function (title, price) {
+    if (window.cartManager) {
+        window.cartManager.addItem(title, price);
+    }
+};
+
+
 
 // Performance Optimization
 function lazyLoadImages() {
     const images = document.querySelectorAll('img[loading="lazy"]');
-    
+
     if ('IntersectionObserver' in window) {
         const imageObserver = new IntersectionObserver((entries, observer) => {
             entries.forEach(entry => {
@@ -492,6 +535,8 @@ document.addEventListener('DOMContentLoaded', () => {
     window.modalManager = new ModalManager();
     window.animationManager = new AnimationManager();
     window.formManager = new FormManager();
+    window.cartManager = new CartManager();
+
 
     // Initialize lazy loading
     lazyLoadImages();
@@ -543,6 +588,7 @@ if (typeof module !== 'undefined' && module.exports) {
         GalleryManager,
         ModalManager,
         AnimationManager,
-        FormManager
+        FormManager,
+        CartManager
     };
 }
