@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -9,7 +10,9 @@
     <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Delius+Swash+Caps&family=Source+Serif+4:wght@400;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Playfair+Display:wght@400;600;700&family=JetBrains+Mono:wght@400&display=swap"
+        rel="stylesheet">
 
     <!-- CSS -->
     <link rel="stylesheet" href="assets/css/style.css">
@@ -18,6 +21,7 @@
     <!-- Font Awesome -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 </head>
+
 <body>
     <!-- Header -->
     <header class="header">
@@ -32,180 +36,197 @@
     </header>
 
     <!-- Gallery Section -->
-<section id="gallery" class="gallery-section">
-    <div class="container">
-        <div class="section-header">
-            <h2 class="section-title">Featured Gallery</h2>
-            <p class="section-subtitle">Browse through our curated collection of creative works</p>
+    <section id="gallery" class="gallery-section">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">Featured Gallery</h2>
+                <p class="section-subtitle">Browse through our curated collection of creative works</p>
+            </div>
+
+            <!-- Gallery Filters -->
+            <div class="gallery-filters">
+                <div class="filter-controls">
+                    <button class="filter-btn active" data-filter="all">All</button>
+                    <button class="filter-btn" data-filter="photography">Photography</button>
+                    <button class="filter-btn" data-filter="video">Videos</button>
+                    <button class="filter-btn" data-filter="digital-art">Digital Art</button>
+                    <button class="filter-btn" data-filter="nature">Nature</button>
+                    <button class="filter-btn" data-filter="portrait">Portraits</button>
+                </div>
+
+                <div class="search-box">
+                    <input type="text" id="gallery-search" placeholder="Search gallery...">
+                    <i class="fas fa-search"></i>
+                </div>
+            </div>
+
+            <!-- Gallery Grid -->
+            <div class="gallery-grid" id="gallery-grid">
+                <!-- Sample Gallery Items -->
+                <div class="gallery-item" data-category="photography nature" data-price="129">
+                    <div class="gallery-card">
+                        <img src="https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=400&h=300&fit=crop"
+                            alt="Mountain Landscape" loading="lazy">
+                        <div class="gallery-overlay">
+                            <div class="gallery-info">
+                                <h3>Mountain Landscape</h3>
+                                <p>Breathtaking mountain vista</p>
+                                <div class="gallery-meta">
+                                    <span class="gallery-category">Nature</span>
+                                    <span class="price-tag">$129</span>
+                                </div>
+                                <button class="buy-btn" onclick="addToCart('Mountain Landscape', 129)">
+                                    <i class="fas fa-shopping-cart"></i> Buy Now
+                                </button>
+                            </div>
+                            <button class="gallery-btn" onclick="openModal(this)" data-title="Mountain Landscape"
+                                data-description="A stunning mountain landscape captured during golden hour"
+                                data-src="https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=800&h=600&fit=crop">
+                                <i class="fas fa-expand"></i>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="gallery-item" data-category="video" data-price="199">
+                    <div class="gallery-card video-card">
+                        <div class="video-thumbnail">
+                            <img src="https://images.unsplash.com/photo-1492691527719-9d1e07e534b4?w=400&h=300&fit=crop"
+                                alt="Ocean Waves Video" loading="lazy">
+                            <div class="play-button">
+                                <i class="fas fa-play"></i>
+                            </div>
+                        </div>
+                        <div class="gallery-overlay">
+                            <div class="gallery-info">
+                                <h3>Ocean Waves</h3>
+                                <p>Relaxing ocean soundscape</p>
+                                <div class="gallery-meta">
+                                    <span class="gallery-category">Video</span>
+                                    <span class="price-tag">$199</span>
+                                </div>
+                                <button class="buy-btn" onclick="addToCart('Ocean Waves', 199)">
+                                    <i class="fas fa-shopping-cart"></i> Buy Now
+                                </button>
+                            </div>
+                            <button class="gallery-btn" onclick="openVideoModal(this)" data-title="Ocean Waves"
+                                data-description="Calming ocean waves with natural sound">
+                                <i class="fas fa-play"></i>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="gallery-item" data-category="portrait photography" data-price="149">
+                    <div class="gallery-card">
+                        <img src="https://images.unsplash.com/photo-1494790108755-2616b612b786?w=400&h=300&fit=crop"
+                            alt="Portrait Photography" loading="lazy">
+                        <div class="gallery-overlay">
+                            <div class="gallery-info">
+                                <h3>Portrait Study</h3>
+                                <p>Professional portrait photography</p>
+                                <div class="gallery-meta">
+                                    <span class="gallery-category">Portrait</span>
+                                    <span class="price-tag">$149</span>
+                                </div>
+                                <button class="buy-btn" onclick="addToCart('Portrait Study', 149)">
+                                    <i class="fas fa-shopping-cart"></i> Buy Now
+                                </button>
+                            </div>
+                            <button class="gallery-btn" onclick="openModal(this)" data-title="Portrait Study"
+                                data-description="A professional portrait showcasing natural lighting techniques"
+                                data-src="https://images.unsplash.com/photo-1494790108755-2616b612b786?w=800&h=600&fit=crop">
+                                <i class="fas fa-expand"></i>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="gallery-item" data-category="digital-art" data-price="89">
+                    <div class="gallery-card">
+                        <img src="https://images.unsplash.com/photo-1541701494587-cb58502866ab?w=400&h=300&fit=crop"
+                            alt="Digital Art" loading="lazy">
+                        <div class="gallery-overlay">
+                            <div class="gallery-info">
+                                <h3>Abstract Digital</h3>
+                                <p>Modern digital artwork</p>
+                                <div class="gallery-meta">
+                                    <span class="gallery-category">Digital Art</span>
+                                    <span class="price-tag">$89</span>
+                                </div>
+                                <button class="buy-btn" onclick="addToCart('Abstract Digital', 89)">
+                                    <i class="fas fa-shopping-cart"></i> Buy Now
+                                </button>
+                            </div>
+                            <button class="gallery-btn" onclick="openModal(this)" data-title="Abstract Digital"
+                                data-description="Contemporary digital art with vibrant colors and geometric patterns"
+                                data-src="https://images.unsplash.com/photo-1541701494587-cb58502866ab?w=800&h=600&fit=crop">
+                                <i class="fas fa-expand"></i>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="gallery-item" data-category="nature photography" data-price="159">
+                    <div class="gallery-card">
+                        <img src="https://images.unsplash.com/photo-1441974231531-c6227db76b6e?w=400&h=300&fit=crop"
+                            alt="Forest Path" loading="lazy">
+                        <div class="gallery-overlay">
+                            <div class="gallery-info">
+                                <h3>Forest Path</h3>
+                                <p>Mystical forest pathway</p>
+                                <div class="gallery-meta">
+                                    <span class="gallery-category">Nature</span>
+                                    <span class="price-tag">$159</span>
+                                </div>
+                                <button class="buy-btn" onclick="addToCart('Forest Path', 159)">
+                                    <i class="fas fa-shopping-cart"></i> Buy Now
+                                </button>
+                            </div>
+                            <button class="gallery-btn" onclick="openModal(this)" data-title="Forest Path"
+                                data-description="A mysterious forest path leading into the unknown depths of nature"
+                                data-src="https://images.unsplash.com/photo-1441974231531-c6227db76b6e?w=800&h=600&fit=crop">
+                                <i class="fas fa-expand"></i>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="gallery-item" data-category="photography" data-price="179">
+                    <div class="gallery-card">
+                        <img src="https://images.unsplash.com/photo-1449824913935-59a10b8d2000?w=400&h=300&fit=crop"
+                            alt="Urban Architecture" loading="lazy">
+                        <div class="gallery-overlay">
+                            <div class="gallery-info">
+                                <h3>Urban Lines</h3>
+                                <p>Modern architecture study</p>
+                                <div class="gallery-meta">
+                                    <span class="gallery-category">Architecture</span>
+                                    <span class="price-tag">$179</span>
+                                </div>
+                                <button class="buy-btn" onclick="addToCart('Urban Lines', 179)">
+                                    <i class="fas fa-shopping-cart"></i> Buy Now
+                                </button>
+                            </div>
+                            <button class="gallery-btn" onclick="openModal(this)" data-title="Urban Lines"
+                                data-description="Contemporary architecture showcasing clean lines and modern design"
+                                data-src="https://images.unsplash.com/photo-1449824913935-59a10b8d2000?w=800&h=600&fit=crop">
+                                <i class="fas fa-expand"></i>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Load More Button -->
+            <div class="gallery-actions">
+                <button class="btn btn-secondary" id="load-more">
+                    Load More
+                    <i class="fas fa-chevron-down"></i>
+                </button>
+            </div>
         </div>
-
-        <!-- Gallery Filters -->
-        <div class="gallery-filters">
-            <div class="filter-controls">
-                <button class="filter-btn active" data-filter="all">All</button>
-                <button class="filter-btn" data-filter="photography">Photography</button>
-                <button class="filter-btn" data-filter="video">Videos</button>
-                <button class="filter-btn" data-filter="digital-art">Digital Art</button>
-                <button class="filter-btn" data-filter="nature">Nature</button>
-                <button class="filter-btn" data-filter="portrait">Portraits</button>
-            </div>
-            
-            <div class="search-box">
-                <input type="text" id="gallery-search" placeholder="Search gallery...">
-                <i class="fas fa-search"></i>
-            </div>
-        </div>
-
-        <!-- Gallery Grid -->
-        <div class="gallery-grid" id="gallery-grid">
-            <!-- Sample Gallery Items -->
-            <div class="gallery-item" data-category="photography nature" data-price="129">
-                <div class="gallery-card">
-                    <img src="https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=400&h=300&fit=crop" alt="Mountain Landscape" loading="lazy">
-                    <div class="gallery-overlay">
-                        <div class="gallery-info">
-                            <h3>Mountain Landscape</h3>
-                            <p>Breathtaking mountain vista</p>
-                            <div class="gallery-meta">
-                                <span class="gallery-category">Nature</span>
-                                <span class="price-tag">$129</span>
-                            </div>
-                            <button class="buy-btn" onclick="addToCart('Mountain Landscape', 129)">
-                                <i class="fas fa-shopping-cart"></i> Buy Now
-                            </button>
-                        </div>
-                        <button class="gallery-btn" onclick="openModal(this)" data-title="Mountain Landscape" data-description="A stunning mountain landscape captured during golden hour" data-src="https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=800&h=600&fit=crop">
-                            <i class="fas fa-expand"></i>
-                        </button>
-                    </div>
-                </div>
-            </div>
-
-            <div class="gallery-item" data-category="video" data-price="199">
-                <div class="gallery-card video-card">
-                    <div class="video-thumbnail">
-                        <img src="https://images.unsplash.com/photo-1492691527719-9d1e07e534b4?w=400&h=300&fit=crop" alt="Ocean Waves Video" loading="lazy">
-                        <div class="play-button">
-                            <i class="fas fa-play"></i>
-                        </div>
-                    </div>
-                    <div class="gallery-overlay">
-                        <div class="gallery-info">
-                            <h3>Ocean Waves</h3>
-                            <p>Relaxing ocean soundscape</p>
-                            <div class="gallery-meta">
-                                <span class="gallery-category">Video</span>
-                                <span class="price-tag">$199</span>
-                            </div>
-                            <button class="buy-btn" onclick="addToCart('Ocean Waves', 199)">
-                                <i class="fas fa-shopping-cart"></i> Buy Now
-                            </button>
-                        </div>
-                        <button class="gallery-btn" onclick="openVideoModal(this)" data-title="Ocean Waves" data-description="Calming ocean waves with natural sound">
-                            <i class="fas fa-play"></i>
-                        </button>
-                    </div>
-                </div>
-            </div>
-
-            <div class="gallery-item" data-category="portrait photography" data-price="149">
-                <div class="gallery-card">
-                    <img src="https://images.unsplash.com/photo-1494790108755-2616b612b786?w=400&h=300&fit=crop" alt="Portrait Photography" loading="lazy">
-                    <div class="gallery-overlay">
-                        <div class="gallery-info">
-                            <h3>Portrait Study</h3>
-                            <p>Professional portrait photography</p>
-                            <div class="gallery-meta">
-                                <span class="gallery-category">Portrait</span>
-                                <span class="price-tag">$149</span>
-                            </div>
-                            <button class="buy-btn" onclick="addToCart('Portrait Study', 149)">
-                                <i class="fas fa-shopping-cart"></i> Buy Now
-                            </button>
-                        </div>
-                        <button class="gallery-btn" onclick="openModal(this)" data-title="Portrait Study" data-description="A professional portrait showcasing natural lighting techniques" data-src="https://images.unsplash.com/photo-1494790108755-2616b612b786?w=800&h=600&fit=crop">
-                            <i class="fas fa-expand"></i>
-                        </button>
-                    </div>
-                </div>
-            </div>
-
-            <div class="gallery-item" data-category="digital-art" data-price="89">
-                <div class="gallery-card">
-                    <img src="https://images.unsplash.com/photo-1541701494587-cb58502866ab?w=400&h=300&fit=crop" alt="Digital Art" loading="lazy">
-                    <div class="gallery-overlay">
-                        <div class="gallery-info">
-                            <h3>Abstract Digital</h3>
-                            <p>Modern digital artwork</p>
-                            <div class="gallery-meta">
-                                <span class="gallery-category">Digital Art</span>
-                                <span class="price-tag">$89</span>
-                            </div>
-                            <button class="buy-btn" onclick="addToCart('Abstract Digital', 89)">
-                                <i class="fas fa-shopping-cart"></i> Buy Now
-                            </button>
-                        </div>
-                        <button class="gallery-btn" onclick="openModal(this)" data-title="Abstract Digital" data-description="Contemporary digital art with vibrant colors and geometric patterns" data-src="https://images.unsplash.com/photo-1541701494587-cb58502866ab?w=800&h=600&fit=crop">
-                            <i class="fas fa-expand"></i>
-                        </button>
-                    </div>
-                </div>
-            </div>
-
-            <div class="gallery-item" data-category="nature photography" data-price="159">
-                <div class="gallery-card">
-                    <img src="https://images.unsplash.com/photo-1441974231531-c6227db76b6e?w=400&h=300&fit=crop" alt="Forest Path" loading="lazy">
-                    <div class="gallery-overlay">
-                        <div class="gallery-info">
-                            <h3>Forest Path</h3>
-                            <p>Mystical forest pathway</p>
-                            <div class="gallery-meta">
-                                <span class="gallery-category">Nature</span>
-                                <span class="price-tag">$159</span>
-                            </div>
-                            <button class="buy-btn" onclick="addToCart('Forest Path', 159)">
-                                <i class="fas fa-shopping-cart"></i> Buy Now
-                            </button>
-                        </div>
-                        <button class="gallery-btn" onclick="openModal(this)" data-title="Forest Path" data-description="A mysterious forest path leading into the unknown depths of nature" data-src="https://images.unsplash.com/photo-1441974231531-c6227db76b6e?w=800&h=600&fit=crop">
-                            <i class="fas fa-expand"></i>
-                        </button>
-                    </div>
-                </div>
-            </div>
-
-            <div class="gallery-item" data-category="photography" data-price="179">
-                <div class="gallery-card">
-                    <img src="https://images.unsplash.com/photo-1449824913935-59a10b8d2000?w=400&h=300&fit=crop" alt="Urban Architecture" loading="lazy">
-                    <div class="gallery-overlay">
-                        <div class="gallery-info">
-                            <h3>Urban Lines</h3>
-                            <p>Modern architecture study</p>
-                            <div class="gallery-meta">
-                                <span class="gallery-category">Architecture</span>
-                                <span class="price-tag">$179</span>
-                            </div>
-                            <button class="buy-btn" onclick="addToCart('Urban Lines', 179)">
-                                <i class="fas fa-shopping-cart"></i> Buy Now
-                            </button>
-                        </div>
-                        <button class="gallery-btn" onclick="openModal(this)" data-title="Urban Lines" data-description="Contemporary architecture showcasing clean lines and modern design" data-src="https://images.unsplash.com/photo-1449824913935-59a10b8d2000?w=800&h=600&fit=crop">
-                            <i class="fas fa-expand"></i>
-                        </button>
-                    </div>
-                </div>
-            </div>
-        </div>
-    
-        <!-- Load More Button -->
-        <div class="gallery-actions">
-            <button class="btn btn-secondary" id="load-more">
-                Load More
-                <i class="fas fa-chevron-down"></i>
-            </button>
-        </div>
-    </div>
-</section>
+    </section>
 
     <!-- Footer -->
     <footer class="footer">
@@ -270,9 +291,9 @@
         </div>
     </div>
 
- <!-- App Dock -->
+    <!-- App Dock -->
     <div class="dock-outer" id="app-dock">
-    <div class="dock-panel" id="dock-panel" role="toolbar" aria-label="Application dock" style="height:50px">
+        <div class="dock-panel" id="dock-panel" role="toolbar" aria-label="Application dock" style="height:50px">
             <div class="dock-item" data-label="Home" data-action="home">
                 <div class="dock-icon"><i class="fas fa-home"></i></div>
                 <div class="dock-label">Home</div>
@@ -293,7 +314,8 @@
                 <div class="dock-icon"><i class="fas fa-cog"></i></div>
                 <div class="dock-label">Settings</div>
             </div>
-            <div class="dock-item" data-label="Theme" data-action="toggle-theme" role="button" aria-pressed="false" tabindex="0">
+            <div class="dock-item" data-label="Theme" data-action="toggle-theme" role="button" aria-pressed="false"
+                tabindex="0">
                 <div class="dock-icon"><i id="dock-theme-icon" class="fas fa-moon" aria-hidden="true"></i></div>
                 <div class="dock-label">Theme</div>
             </div>
@@ -304,28 +326,29 @@
     <script src="assets/js/dock.js"></script>
     <script>
         // Simple dock navigation mapping for standalone pages
-        (function(){
+        (function () {
             const dock = document.getElementById('dock-panel');
-            if(!dock) return;
+            if (!dock) return;
             dock.addEventListener('click', (e) => {
                 const item = e.target.closest('.dock-item');
-                if(!item) return;
+                if (!item) return;
                 const action = item.getAttribute('data-action');
-                if(!action) return;
+                if (!action) return;
                 const map = {
                     home: 'index.html',
                     gallery: 'gallery.html',
                     about: 'about.html',
                     contact: 'contact.html'
                 };
-                if(map[action]) {
+                if (map[action]) {
                     window.location.href = map[action];
                 }
-                if(action === 'toggle-theme' && window.ThemeManager) {
+                if (action === 'toggle-theme' && window.ThemeManager) {
                     window.ThemeManager.toggleTheme && window.ThemeManager.toggleTheme();
                 }
             });
         })();
     </script>
 </body>
+
 </html>

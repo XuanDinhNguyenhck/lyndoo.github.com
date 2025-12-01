@@ -38,16 +38,18 @@
   --font-serif: 'Playfair Display', serif;
   /* More premium serif */
   --font-mono: 'JetBrains Mono', monospace;
-  --radius: 0.75rem;
-  --hero-radius: 1.5rem;
-  --shadow-2xs: 3px 3px 2px 0px hsl(88 22% 35% / 0.07);
-  --shadow-xs: 3px 3px 2px 0px hsl(88 22% 35% / 0.07);
+  --radius: 0.5rem;
+  /* Slightly sharper for minimalism */
+  --hero-radius: 0;
+  /* Remove rounded corners for hero */
+  --shadow-2xs: 0 1px 2px 0 rgb(0 0 0 / 0.02);
+  --shadow-xs: 0 1px 3px 0 rgb(0 0 0 / 0.05);
   --shadow-sm: 0 1px 2px 0 rgb(0 0 0 / 0.05);
-  --shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
-  --shadow-md: 0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1);
-  --shadow-lg: 0 20px 25px -5px rgb(0 0 0 / 0.1), 0 8px 10px -6px rgb(0 0 0 / 0.1);
-  --shadow-xl: 0 25px 50px -12px rgb(0 0 0 / 0.25);
-  --shadow-2xl: 3px 3px 2px 0px hsl(88 22% 35% / 0.38);
+  --shadow: 0 4px 6px -1px rgb(0 0 0 / 0.05), 0 2px 4px -2px rgb(0 0 0 / 0.05);
+  --shadow-md: 0 10px 15px -3px rgb(0 0 0 / 0.05), 0 4px 6px -4px rgb(0 0 0 / 0.05);
+  --shadow-lg: 0 20px 25px -5px rgb(0 0 0 / 0.05), 0 8px 10px -6px rgb(0 0 0 / 0.05);
+  --shadow-xl: 0 25px 50px -12px rgb(0 0 0 / 0.1);
+  --shadow-2xl: 0 25px 50px -12px rgb(0 0 0 / 0.15);
   --tracking-normal: 0em;
   --spacing: 0.25rem;
 }
@@ -116,6 +118,7 @@ html {
 
 body {
   font-family: var(--font-sans);
+  /* Use sans-serif for UI */
   background-color: var(--background);
   color: var(--foreground);
   line-height: 1.6;
@@ -227,11 +230,16 @@ p {
   left: 0;
   right: 0;
   z-index: 1000;
-  background-color: color-mix(in srgb, var(--background) 80%, transparent);
-  backdrop-filter: blur(16px);
-  -webkit-backdrop-filter: blur(16px);
-  border-bottom: 1px solid color-mix(in srgb, var(--border) 50%, transparent);
+  background-color: rgba(255, 255, 255, 0.9);
+  /* Cleaner background */
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  border-bottom: 1px solid var(--border);
   transition: all 0.3s ease;
+}
+
+.dark .header {
+  background-color: rgba(0, 0, 0, 0.8);
 }
 
 .header.scrolled {
@@ -247,9 +255,9 @@ p {
   justify-content: space-between;
   align-items: center;
   max-width: 1400px;
-  /* Wider container */
   margin: 0 auto;
-  padding: 0 2rem;
+  padding: 0 1.5rem;
+  /* Adjusted padding */
 }
 
 /* when header should show only the centered logo */
@@ -267,15 +275,17 @@ p {
   align-items: center;
   gap: 0.75rem;
   font-family: var(--font-serif);
-  font-size: 1.75rem;
-  font-weight: 700;
+  font-size: 1.5rem;
+  /* Slightly smaller for elegance */
+  font-weight: 600;
   color: var(--foreground);
   text-decoration: none;
-  letter-spacing: -0.02em;
+  letter-spacing: -0.01em;
 }
 
 .nav-logo i {
   color: var(--primary);
+  font-size: 1.25rem;
 }
 
 .nav-menu {
@@ -340,24 +350,24 @@ p {
 
 /* Hero Section */
 .hero {
-  min-height: 100vh;
+  min-height: 90vh;
+  /* Slightly shorter */
   display: flex;
   align-items: center;
-  padding: 8rem 1rem 4rem;
-  background: radial-gradient(circle at top right, color-mix(in srgb, var(--primary) 10%, transparent), transparent 40%),
-    radial-gradient(circle at bottom left, color-mix(in srgb, var(--accent) 10%, transparent), transparent 40%);
+  padding: 6rem 1rem 4rem;
+  background: var(--background);
+  /* Solid background for minimalism */
   position: relative;
   overflow: hidden;
 }
 
 .hero-content {
-  max-width: 1400px;
+  max-width: 1000px;
+  /* Narrower for focus */
   margin: 0 auto;
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 6rem;
-  align-items: center;
-  padding: 0 2rem;
+  text-align: center;
+  /* Center align for minimalism */
+  padding: 0 1.5rem;
 }
 
 /* hero-content overlay (glass) */
@@ -371,32 +381,40 @@ p {
 
 .hero-title {
   font-family: var(--font-serif);
-  font-size: 5rem;
-  font-weight: 800;
+  font-size: 4rem;
+  /* Responsive size handled in media queries */
+  font-weight: 700;
   line-height: 1.1;
   color: var(--foreground);
   margin-bottom: 1.5rem;
-  letter-spacing: -0.03em;
-  background: none;
-  -webkit-text-fill-color: initial;
+  letter-spacing: -0.02em;
 }
 
 .hero-title span {
+  display: inline-block;
+  /* Inline for centered layout */
+  color: var(--foreground);
+}
+
+.hero-title span:last-child {
   color: var(--primary);
-  display: block;
 }
 
 .hero-subtitle {
-  font-size: 1.35rem;
+  font-size: 1.25rem;
   color: var(--muted-foreground);
-  margin-bottom: 3rem;
-  max-width: 90%;
+  margin-bottom: 2.5rem;
+  max-width: 600px;
+  margin-left: auto;
+  margin-right: auto;
   font-weight: 400;
+  line-height: 1.6;
 }
 
 .hero-actions {
   display: flex;
   gap: 1rem;
+  justify-content: center;
   flex-wrap: wrap;
 }
 
@@ -520,9 +538,18 @@ p {
 /* Gallery Grid */
 .gallery-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
-  gap: 2.5rem;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  /* Smaller min-width for mobile */
+  gap: 2rem;
   margin-bottom: 4rem;
+}
+
+@media (max-width: 768px) {
+  .gallery-grid {
+    grid-template-columns: repeat(auto-fill, minmax(100%, 1fr));
+    /* 1 column on mobile */
+    gap: 1.5rem;
+  }
 }
 
 .gallery-item {
@@ -617,22 +644,24 @@ p {
 
 .gallery-category {
   display: inline-block;
-  background: rgba(255, 255, 255, 0.2);
-  backdrop-filter: blur(4px);
-  color: white;
-  padding: 0.25rem 0.75rem;
+  background: rgba(255, 255, 255, 0.9);
+  /* More opaque for readability */
+  color: var(--foreground);
+  padding: 0.35rem 0.85rem;
   border-radius: 2rem;
   font-size: 0.75rem;
-  font-weight: 500;
+  font-weight: 600;
   letter-spacing: 0.05em;
   text-transform: uppercase;
+  box-shadow: var(--shadow-sm);
 }
 
 .price-tag {
   font-family: var(--font-mono);
   font-size: 1.1rem;
   font-weight: 700;
-  color: var(--accent);
+  color: white;
+  /* White for contrast on overlay */
   text-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
 }
 
@@ -640,7 +669,8 @@ p {
   background: var(--primary);
   color: var(--primary-foreground);
   border: none;
-  padding: 0.5rem 1rem;
+  padding: 0.75rem 1.5rem;
+  /* Larger touch target */
   border-radius: 2rem;
   font-weight: 600;
   cursor: pointer;
@@ -649,13 +679,49 @@ p {
   align-items: center;
   gap: 0.5rem;
   margin-top: 1rem;
-  width: fit-content;
+  width: 100%;
+  /* Full width on mobile cards */
+  justify-content: center;
+  min-height: 44px;
+  /* Touch target size */
 }
 
 .buy-btn:hover {
   background: white;
   color: black;
   transform: translateY(-2px);
+}
+
+/* Mobile Optimizations */
+@media (max-width: 768px) {
+  .hero-title {
+    font-size: 2.5rem;
+  }
+
+  .hero-subtitle {
+    font-size: 1.1rem;
+    padding: 0 1rem;
+  }
+
+  .gallery-overlay {
+    opacity: 1;
+    /* Always show overlay on mobile */
+    transform: translateY(0);
+    background: linear-gradient(to top, rgba(0, 0, 0, 0.8) 0%, rgba(0, 0, 0, 0.2) 60%, transparent 100%);
+    padding: 1.5rem;
+  }
+
+  .gallery-info {
+    transform: translateY(0);
+  }
+
+  .gallery-btn {
+    opacity: 1;
+    top: 1rem;
+    right: 1rem;
+    background: rgba(255, 255, 255, 0.9);
+    color: var(--foreground);
+  }
 }
 
 .gallery-btn {
