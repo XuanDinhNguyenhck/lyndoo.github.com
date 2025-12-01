@@ -55,53 +55,52 @@
 }
 
 .dark {
-  /* Premium Dark Theme */
-  --background: oklch(0.15 0.02 260);
-  /* Deep Navy/Black */
-  --foreground: oklch(0.95 0.01 260);
-  --card: oklch(0.20 0.03 260);
-  --card-foreground: oklch(0.95 0.01 260);
-  --popover: oklch(0.20 0.03 260);
-  --popover-foreground: oklch(0.95 0.01 260);
-  --primary: oklch(0.70 0.15 260);
-  /* Brighter Royal Blue */
-  --primary-foreground: oklch(0.15 0.02 260);
-  --secondary: oklch(0.25 0.04 260);
-  --secondary-foreground: oklch(0.90 0.02 260);
+  /* Premium Dark Theme - Refined */
+  --background: oklch(0.18 0.02 260);
+  /* Slightly lighter than pitch black, deep navy */
+  --foreground: oklch(0.98 0.01 260);
+  --card: oklch(0.22 0.03 260);
+  /* Lighter card for contrast */
+  --card-foreground: oklch(0.98 0.01 260);
+  --popover: oklch(0.22 0.03 260);
+  --popover-foreground: oklch(0.98 0.01 260);
+  --primary: oklch(0.65 0.18 260);
+  /* More vibrant blue for dark mode */
+  --primary-foreground: oklch(0.98 0.01 260);
+  --secondary: oklch(0.28 0.04 260);
+  --secondary-foreground: oklch(0.98 0.01 260);
   --muted: oklch(0.25 0.02 260);
-  --muted-foreground: oklch(0.70 0.02 260);
-  --accent: oklch(0.30 0.05 260);
-  --accent-foreground: oklch(0.95 0.01 260);
+  --muted-foreground: oklch(0.75 0.02 260);
+  /* Higher contrast for muted text */
+  --accent: oklch(0.35 0.06 260);
+  --accent-foreground: oklch(0.98 0.01 260);
   --destructive: oklch(0.6 0.15 20);
   --destructive-foreground: oklch(0.98 0.01 90);
   --border: oklch(0.30 0.03 260);
   --input: oklch(0.25 0.03 260);
-  --ring: oklch(0.70 0.15 260);
-  --chart-1: oklch(0.6762 0.0567 132.4479);
-  --chart-2: oklch(0.7350 0.0564 130.8494);
-  --chart-3: oklch(0.5929 0.0464 137.6224);
-  --chart-4: oklch(0.6540 0.0723 90.7629);
-  --chart-5: oklch(0.5183 0.0390 137.1892);
-  --sidebar: oklch(0.3303 0.0214 88.0737);
-  --sidebar-foreground: oklch(0.9217 0.0235 82.1191);
-  --sidebar-primary: oklch(0.6762 0.0567 132.4479);
-  --sidebar-primary-foreground: oklch(0.2686 0.0105 61.0213);
-  --sidebar-accent: oklch(0.6540 0.0723 90.7629);
-  --sidebar-accent-foreground: oklch(0.2686 0.0105 61.0213);
-  --sidebar-border: oklch(0.4448 0.0239 84.5498);
-  --sidebar-ring: oklch(0.6762 0.0567 132.4479);
-  --font-sans: Delius Swash Caps, cursive;
-  --font-serif: Source Serif 4, serif;
-  --font-mono: JetBrains Mono, monospace;
-  --radius: 0.425rem;
-  --shadow-2xs: 3px 3px 2px 0px hsl(88 22% 35% / 0.07);
-  --shadow-xs: 3px 3px 2px 0px hsl(88 22% 35% / 0.07);
-  --shadow-sm: 3px 3px 2px 0px hsl(88 22% 35% / 0.15), 3px 1px 2px -1px hsl(88 22% 35% / 0.15);
-  --shadow: 3px 3px 2px 0px hsl(88 22% 35% / 0.15), 3px 1px 2px -1px hsl(88 22% 35% / 0.15);
-  --shadow-md: 3px 3px 2px 0px hsl(88 22% 35% / 0.15), 3px 2px 4px -1px hsl(88 22% 35% / 0.15);
-  --shadow-lg: 3px 3px 2px 0px hsl(88 22% 35% / 0.15), 3px 4px 6px -1px hsl(88 22% 35% / 0.15);
-  --shadow-xl: 3px 3px 2px 0px hsl(88 22% 35% / 0.15), 3px 8px 10px -1px hsl(88 22% 35% / 0.15);
-  --shadow-2xl: 3px 3px 2px 0px hsl(88 22% 35% / 0.38);
+  --ring: oklch(0.65 0.18 260);
+  /* Sidebar variables (kept consistent) */
+  --sidebar: oklch(0.20 0.03 260);
+  --sidebar-foreground: oklch(0.98 0.01 260);
+  --sidebar-primary: oklch(0.65 0.18 260);
+  --sidebar-primary-foreground: oklch(0.98 0.01 260);
+  --sidebar-accent: oklch(0.28 0.04 260);
+  --sidebar-accent-foreground: oklch(0.98 0.01 260);
+  --sidebar-border: oklch(0.30 0.03 260);
+  --sidebar-ring: oklch(0.65 0.18 260);
+  --font-sans: 'Inter', system-ui, -apple-system, sans-serif;
+  --font-serif: 'Playfair Display', serif;
+  --font-mono: 'JetBrains Mono', monospace;
+  --radius: 0.5rem;
+  --hero-radius: 0;
+  --shadow-2xs: 0 1px 2px 0 rgb(0 0 0 / 0.3);
+  --shadow-xs: 0 1px 3px 0 rgb(0 0 0 / 0.4);
+  --shadow-sm: 0 1px 2px 0 rgb(0 0 0 / 0.4);
+  --shadow: 0 4px 6px -1px rgb(0 0 0 / 0.4), 0 2px 4px -2px rgb(0 0 0 / 0.4);
+  --shadow-md: 0 10px 15px -3px rgb(0 0 0 / 0.4), 0 4px 6px -4px rgb(0 0 0 / 0.4);
+  --shadow-lg: 0 20px 25px -5px rgb(0 0 0 / 0.4), 0 8px 10px -6px rgb(0 0 0 / 0.4);
+  --shadow-xl: 0 25px 50px -12px rgb(0 0 0 / 0.5);
+  --shadow-2xl: 0 25px 50px -12px rgb(0 0 0 / 0.6);
 }
 
 /* Reset and Base Styles */
@@ -196,8 +195,9 @@ p {
 }
 
 .btn-primary {
-  background: linear-gradient(135deg, var(--primary), color-mix(in srgb, var(--primary) 80%, black));
+  background: var(--primary);
   color: var(--primary-foreground);
+  transition: all 0.3s ease;
 }
 
 .btn-primary:hover {
